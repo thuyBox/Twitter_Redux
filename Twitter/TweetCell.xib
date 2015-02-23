@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="104" id="KGk-i7-Jjw" customClass="TweetCell">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UFW-3W-dM6">
+                        <rect key="frame" x="8" y="8" width="88" height="88"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="88" id="w7i-TL-jpF"/>
+                            <constraint firstAttribute="width" constant="88" id="wdH-Mi-73k"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5c-ao-J2n">
+                        <rect key="frame" x="104" y="8" width="44" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5Y-cC-Bvq">
+                        <rect key="frame" x="104" y="36" width="40" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bie-Nc-p6f">
+                        <rect key="frame" x="435" y="12" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4h-b5-LFe">
+                        <rect key="frame" x="156" y="12" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="bie-Nc-p6f" secondAttribute="trailing" constant="8" id="6aX-qV-vB3"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g5Y-cC-Bvq" secondAttribute="bottom" constant="8" id="7RR-qv-4OD"/>
+                    <constraint firstItem="UFW-3W-dM6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="9eK-9g-vmy"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g5Y-cC-Bvq" secondAttribute="trailing" constant="8" id="Fjw-bi-YbH"/>
+                    <constraint firstItem="u5c-ao-J2n" firstAttribute="bottom" secondItem="bie-Nc-p6f" secondAttribute="bottom" id="Kld-JD-IT9"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="k4h-b5-LFe" secondAttribute="bottom" constant="8" id="LZA-5d-8O1"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UFW-3W-dM6" secondAttribute="bottom" constant="8" id="Nvy-GU-9gZ"/>
+                    <constraint firstItem="k4h-b5-LFe" firstAttribute="leading" secondItem="u5c-ao-J2n" secondAttribute="trailing" constant="8" id="Pm6-JD-bDG"/>
+                    <constraint firstItem="g5Y-cC-Bvq" firstAttribute="top" secondItem="u5c-ao-J2n" secondAttribute="bottom" constant="8" id="UHO-iL-wsL"/>
+                    <constraint firstItem="UFW-3W-dM6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="bEl-os-Vs8"/>
+                    <constraint firstItem="u5c-ao-J2n" firstAttribute="leading" secondItem="UFW-3W-dM6" secondAttribute="trailing" constant="8" id="cAE-fR-WAb"/>
+                    <constraint firstItem="bie-Nc-p6f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u5c-ao-J2n" secondAttribute="trailing" constant="2" id="dRV-kC-7MB"/>
+                    <constraint firstItem="u5c-ao-J2n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jE1-dn-FdY"/>
+                    <constraint firstItem="u5c-ao-J2n" firstAttribute="bottom" secondItem="k4h-b5-LFe" secondAttribute="bottom" id="pbt-ke-gId"/>
+                    <constraint firstItem="bie-Nc-p6f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="k4h-b5-LFe" secondAttribute="trailing" constant="2" id="qlI-c1-582"/>
+                    <constraint firstItem="g5Y-cC-Bvq" firstAttribute="leading" secondItem="UFW-3W-dM6" secondAttribute="trailing" constant="8" id="qnc-nC-ZJG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="createdAtLabel" destination="bie-Nc-p6f" id="4qQ-oy-9lJ"/>
+                <outlet property="nameLabel" destination="u5c-ao-J2n" id="DDF-8W-rjv"/>
+                <outlet property="profileImageView" destination="UFW-3W-dM6" id="Klf-tO-hWO"/>
+                <outlet property="screenNameLabel" destination="k4h-b5-LFe" id="uXN-bS-44D"/>
+                <outlet property="tweetLabel" destination="g5Y-cC-Bvq" id="HE8-Ra-phh"/>
+            </connections>
+            <point key="canvasLocation" x="1128" y="535"/>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
