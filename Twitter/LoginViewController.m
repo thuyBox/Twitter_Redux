@@ -20,7 +20,8 @@
         NSLog(@"Welcome %@", user.name);
         TwitterTimelineViewController *vc = [[TwitterTimelineViewController alloc] init];
         UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-        [self presentViewController:nvc animated:YES completion:nil];
+        [[UIApplication sharedApplication] delegate].window.rootViewController = nvc;
+        //[self presentViewController:nvc animated:YES completion:nil];
     }];
 }
 

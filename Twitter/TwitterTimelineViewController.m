@@ -29,7 +29,7 @@
     self.tweets = [[NSMutableArray alloc] init];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
-    self.tableView.estimatedRowHeight = 140;
+    self.tableView.estimatedRowHeight = 120;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // Add refresh control

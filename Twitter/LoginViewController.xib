@@ -14,8 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-6J-cbl">
-                    <rect key="frame" x="74" y="269" width="172" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-6J-cbl">
+                    <rect key="frame" x="105" y="269" width="110" height="30"/>
                     <state key="normal" title="Log in to Twitter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -25,6 +25,10 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="aaa-6J-cbl" secondAttribute="centerY" id="MiC-BQ-PNf"/>
+                <constraint firstAttribute="centerX" secondItem="aaa-6J-cbl" secondAttribute="centerX" id="PdJ-Nr-n2P"/>
+            </constraints>
             <point key="canvasLocation" x="368" y="674"/>
         </view>
     </objects>

@@ -53,8 +53,10 @@
     NSString *tweetAuthor = self.tweet.user.name;
     if (self.tweet.inReplyToStatusId == nil && ![tweetAuthor isEqualToString:currentUserName]) {
         self.retweetButton.enabled = YES;
+        self.replyButton.enabled = YES;
     } else {
         self.retweetButton.enabled = NO;
+        self.replyButton.enabled = NO;
     }
     
     if (self.tweet.retweeted) {
