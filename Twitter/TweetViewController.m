@@ -10,6 +10,8 @@
 
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
+#import "ComposeTweetViewController.h"
+#import "TwitterTimelineViewController.h"
 
 @interface TweetViewController ()
 
@@ -36,6 +38,10 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply:)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
+    [self setupButtons];
+}
+
+- (void)setupButtons {
     self.retweetButton.backgroundColor = [UIColor clearColor];
     self.replyButton.backgroundColor = [UIColor clearColor];
     self.favoriteButton.backgroundColor = [UIColor clearColor];
@@ -43,10 +49,18 @@
     self.retweetLabel.text = [NSString stringWithFormat:@"%@ RETWEETS", self.tweet.retweetCount];
     self.favoriteLabel.text = [NSString stringWithFormat:@"%@ FAVORITES", self.tweet.favourites_count];
     
+    NSString *currentUserName = [User user].name;
+    NSString *tweetAuthor = self.tweet.user.name;
+    if (self.tweet.inReplyToStatusId == nil && ![tweetAuthor isEqualToString:currentUserName]) {
+        self.retweetButton.enabled = YES;
+    } else {
+        self.retweetButton.enabled = NO;
+    }
+    
     if (self.tweet.retweeted) {
         [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on.png"] forState:UIControlStateNormal];
     } else {
-    [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet.png"] forState:UIControlStateNormal];
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet.png"] forState:UIControlStateNormal];
     }
     
     if (self.tweet.favorited) {
@@ -63,25 +77,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)onReply:(id)sender {
+    ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];
+    vc.toBeRepliedTweet = self.tweet;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)onRetweet:(id)sender {
-    [[TwitterClient sharedInstance] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
+    if (self.tweet.retweeted) {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on.png"] forState:UIControlStateNormal];
+    } else {
+        [[TwitterClient sharedInstance] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (!error) {
+                TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+                [vc addTweet:tweet];
+                self.tweet.retweetCount = @([self.tweet.retweetCount intValue] + 1);
+                self.tweet.retweeted = YES;
+                [vc updateTweet:self.tweet oldTweet:self.tweet];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            } else {
+                NSLog(@"error retweeting in tweetVC: %@", error);
+            }
+        }];
+    }
 }
 
 - (IBAction)onFavorite:(id)sender {
+    if (self.tweet.favorited) {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on.png"] forState:UIControlStateNormal];
+    } else {
+        [[TwitterClient sharedInstance] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            NSLog(@"finished favoriting tweet %@", tweet);
+            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            self.tweet.favourites_count = @([self.tweet.favourites_count intValue] + 1);
+            self.tweet.favorited = YES;
+            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+    }
 }
 @end

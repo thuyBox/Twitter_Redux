@@ -19,7 +19,10 @@
 @property (nonatomic, strong) NSNumber *favourites_count;
 @property BOOL retweeted;
 @property BOOL favorited;
+@property (nonatomic, strong) NSNumber *inReplyToStatusId;
+@property (nonatomic, strong) NSString *inReplyToScreenName;
 
 - (id) initWithDictionary: (NSDictionary *)dictionary;
 + (NSArray *) tweetsWithArray: (NSArray *)array;
+//- (NSString*) convertObjectToJsonString;
 @end

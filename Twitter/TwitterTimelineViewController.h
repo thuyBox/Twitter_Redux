@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TWeet.h"
 
 @interface TwitterTimelineViewController : UIViewController
-
+- (void) addTweet:(Tweet *)tweet;
+- (void) updateTweet:(Tweet *)tweet oldTweet:(Tweet *)oldTweet;
 @end

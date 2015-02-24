@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
+#import "TwitterTimelineViewController.h"
 
 @interface ComposeTweetViewController ()
 
@@ -41,26 +42,27 @@
 }
 
 - (void)onTweet {
-    [[TwitterClient sharedInstance] tweet:self.tweetTextView.text completion:^(Tweet *tweet, NSError *error) {
-        //TODO: handle error
-        NSLog(@"Finished tweeting: %@", tweet);
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
+    if (self.toBeRepliedTweet) {
+        [[TwitterClient sharedInstance] reply:self.toBeRepliedTweet text:self.tweetTextView.text completion:^(Tweet *tweet, NSError *error) {
+            NSLog(@"Finished replying: %@", tweet);
+            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            [vc addTweet:tweet];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+    } else {
+        [[TwitterClient sharedInstance] tweet:self.tweetTextView.text completion:^(Tweet *tweet, NSError *error) {
+            //TODO: handle error
+            NSLog(@"Finished tweeting: %@", tweet);
+            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            [vc addTweet:tweet];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

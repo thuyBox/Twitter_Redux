@@ -103,8 +103,26 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-//- (void)reply:(Tweet *)tweet text:(NSString *)text completion:(void (^)(Tweet *tweet, NSError *error))completion;
+- (void)reply:(Tweet *)tweet text:(NSString *)text completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    [self POST:@"1.1/statuses/update.json" parameters:@{ @"status" : text, @"in_reply_to_status_id": tweet.tweetId} constructingBodyWithBlock:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully reply tweet: %@", responseObject);
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error replying tweet: %@", error);
+        completion(nil, error);
+    }];
+}
 
-//- (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *tweet, NSError *error))completion;
+- (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    [self POST:@"1.1/favorites/create.json" parameters:@{@"id": tweet.tweetId} constructingBodyWithBlock:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully favorited tweet: %@\n. Resulted tweet: %@", tweet, responseObject);
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error favoriting tweet: %@", error);
+        completion(nil, error);
+    }];
+}
 
 @end

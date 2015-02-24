@@ -12,8 +12,6 @@
 		7603E14A1A9AE57200245DD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1491A9AE57200245DD2 /* Images.xcassets */; };
 		7603E14D1A9AE57200245DD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7603E14B1A9AE57200245DD2 /* LaunchScreen.xib */; };
 		7603E1591A9AE57200245DD2 /* TwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E1581A9AE57200245DD2 /* TwitterTests.m */; };
-		7603E1651A9AE5EC00245DD2 /* TwitterTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E1631A9AE5EC00245DD2 /* TwitterTimelineViewController.m */; };
-		7603E1661A9AE5EC00245DD2 /* TwitterTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1641A9AE5EC00245DD2 /* TwitterTimelineViewController.xib */; };
 		7603E16A1A9AE91800245DD2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E1681A9AE91800245DD2 /* LoginViewController.m */; };
 		7603E16B1A9AE91800245DD2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1691A9AE91800245DD2 /* LoginViewController.xib */; };
 		7603E16E1A9AE96300245DD2 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E16D1A9AE96300245DD2 /* TwitterClient.m */; };
@@ -34,6 +32,8 @@
 		7603E1941A9B36B500245DD2 /* retweet_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1911A9B36B500245DD2 /* retweet_on.png */; };
 		7603E1951A9B36B500245DD2 /* favorite_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1921A9B36B500245DD2 /* favorite_hover.png */; };
 		7603E1971A9B371700245DD2 /* retweet_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1961A9B371700245DD2 /* retweet_hover.png */; };
+		7603E19A1A9B418200245DD2 /* TwitterTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E1981A9B418200245DD2 /* TwitterTimelineViewController.m */; };
+		7603E19B1A9B418200245DD2 /* TwitterTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1991A9B418200245DD2 /* TwitterTimelineViewController.xib */; };
 		9270A6D68D06BD04296949B0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3810FFAA274F05B7CDC13482 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,9 +60,6 @@
 		7603E1521A9AE57200245DD2 /* TwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7603E1571A9AE57200245DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7603E1581A9AE57200245DD2 /* TwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterTests.m; sourceTree = "<group>"; };
-		7603E1621A9AE5EC00245DD2 /* TwitterTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTimelineViewController.h; sourceTree = SOURCE_ROOT; };
-		7603E1631A9AE5EC00245DD2 /* TwitterTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTimelineViewController.m; sourceTree = SOURCE_ROOT; };
-		7603E1641A9AE5EC00245DD2 /* TwitterTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterTimelineViewController.xib; sourceTree = SOURCE_ROOT; };
 		7603E1671A9AE91800245DD2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7603E1681A9AE91800245DD2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7603E1691A9AE91800245DD2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -91,6 +88,9 @@
 		7603E1911A9B36B500245DD2 /* retweet_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet_on.png; sourceTree = "<group>"; };
 		7603E1921A9B36B500245DD2 /* favorite_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_hover.png; sourceTree = "<group>"; };
 		7603E1961A9B371700245DD2 /* retweet_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet_hover.png; sourceTree = "<group>"; };
+		7603E1981A9B418200245DD2 /* TwitterTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTimelineViewController.m; sourceTree = "<group>"; };
+		7603E1991A9B418200245DD2 /* TwitterTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterTimelineViewController.xib; sourceTree = "<group>"; };
+		7603E19C1A9B419A00245DD2 /* TwitterTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTimelineViewController.h; sourceTree = "<group>"; };
 		A995F65BDB0085C0F6BF574E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,14 +156,14 @@
 				7603E16F1A9AF2AB00245DD2 /* Models */,
 				7603E1401A9AE57200245DD2 /* AppDelegate.h */,
 				7603E1411A9AE57200245DD2 /* AppDelegate.m */,
+				7603E19C1A9B419A00245DD2 /* TwitterTimelineViewController.h */,
+				7603E1981A9B418200245DD2 /* TwitterTimelineViewController.m */,
+				7603E1991A9B418200245DD2 /* TwitterTimelineViewController.xib */,
 				7603E16C1A9AE96300245DD2 /* TwitterClient.h */,
 				7603E16D1A9AE96300245DD2 /* TwitterClient.m */,
 				7603E1671A9AE91800245DD2 /* LoginViewController.h */,
 				7603E1681A9AE91800245DD2 /* LoginViewController.m */,
 				7603E1691A9AE91800245DD2 /* LoginViewController.xib */,
-				7603E1621A9AE5EC00245DD2 /* TwitterTimelineViewController.h */,
-				7603E1631A9AE5EC00245DD2 /* TwitterTimelineViewController.m */,
-				7603E1641A9AE5EC00245DD2 /* TwitterTimelineViewController.xib */,
 				7603E1761A9B13FD00245DD2 /* TweetCell.h */,
 				7603E1771A9B13FD00245DD2 /* TweetCell.m */,
 				7603E1781A9B13FD00245DD2 /* TweetCell.xib */,
@@ -310,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7603E16B1A9AE91800245DD2 /* LoginViewController.xib in Resources */,
+				7603E19B1A9B418200245DD2 /* TwitterTimelineViewController.xib in Resources */,
 				7603E18E1A9B2E1000245DD2 /* favorite.png in Resources */,
 				7603E1941A9B36B500245DD2 /* retweet_on.png in Resources */,
 				7603E18D1A9B2E1000245DD2 /* reply.png in Resources */,
@@ -318,7 +319,6 @@
 				7603E14D1A9AE57200245DD2 /* LaunchScreen.xib in Resources */,
 				7603E1821A9B1CC500245DD2 /* ComposeTweetViewController.xib in Resources */,
 				7603E18F1A9B2E1000245DD2 /* retweet.png in Resources */,
-				7603E1661A9AE5EC00245DD2 /* TwitterTimelineViewController.xib in Resources */,
 				7603E1931A9B36B500245DD2 /* reply_hover.png in Resources */,
 				7603E18C1A9B2E1000245DD2 /* favorite_on.png in Resources */,
 				7603E1951A9B36B500245DD2 /* favorite_hover.png in Resources */,
@@ -377,8 +377,8 @@
 				7603E16A1A9AE91800245DD2 /* LoginViewController.m in Sources */,
 				7603E1751A9AF2C500245DD2 /* User.m in Sources */,
 				7603E17D1A9B183900245DD2 /* UIImageView+AFNetworkingFadingIn.m in Sources */,
+				7603E19A1A9B418200245DD2 /* TwitterTimelineViewController.m in Sources */,
 				7603E1811A9B1CC500245DD2 /* ComposeTweetViewController.m in Sources */,
-				7603E1651A9AE5EC00245DD2 /* TwitterTimelineViewController.m in Sources */,
 				7603E1861A9B2C2F00245DD2 /* TweetViewController.m in Sources */,
 				7603E16E1A9AE96300245DD2 /* TwitterClient.m in Sources */,
 				7603E1721A9AF2BC00245DD2 /* Tweet.m in Sources */,

@@ -7,6 +7,11 @@
 //
 
 #import "TweetCell.h"
+#import "TwitterClient.h"
+#import "ComposeTweetViewController.h"
+#import "TwitterTimelineViewController.h"
+#import "UIImageView+AFNetworking.h"
+#import "NSDate+DateTools.h"
 
 @implementation TweetCell
 
@@ -21,10 +26,104 @@
     // Configure the view for the selected state
 }
 
+- (void)setTweet:(Tweet *)tweet {
+    _tweet = tweet;
+    [self setupButtons];
+    
+    self.nameLabel.text = tweet.user.name;
+    self.tweetLabel.text = tweet.text;
+    self.createdAtLabel.text = tweet.createdAt.shortTimeAgoSinceNow;
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
+    self.screenNameLabel.text = tweet.user.screenName;
+    NSString *details = @"";
+    if (tweet.retweeted) {
+        details = [details stringByAppendingString:@" retweeted"];
+    } else if (tweet.inReplyToStatusId) {
+        details = [details stringByAppendingString:[NSString stringWithFormat:@" in reply to @%@", tweet.inReplyToScreenName]];
+    }
+    self.additionalDetailsLabel.text = details;
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%@", self.tweet.retweetCount];
+    self.favoriteCountLabel.text = [NSString stringWithFormat:@"%@", self.tweet.favourites_count];
+}
+
+- (void)setupButtons {
+    self.retweetButton.backgroundColor = [UIColor clearColor];
+    self.replyButton.backgroundColor = [UIColor clearColor];
+    self.favoriteButton.backgroundColor = [UIColor clearColor];
+    
+    NSString *currentUserName = [User user].name;
+    NSString *tweetAuthor = self.tweet.user.name;
+    if (self.tweet.inReplyToStatusId == nil && ![tweetAuthor isEqualToString:currentUserName]) {
+        self.retweetButton.enabled = YES;
+    } else {
+        self.retweetButton.enabled = NO;
+    }
+    
+    if (self.tweet.retweeted) {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on.png"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet.png"] forState:UIControlStateNormal];
+    }
+    
+    if (self.tweet.favorited) {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on.png"] forState:UIControlStateNormal];
+    } else {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite.png"] forState:UIControlStateNormal];
+    }
+    
+    [self.replyButton setBackgroundImage:[UIImage imageNamed:@"reply.png"] forState:UIControlStateNormal];
+}
+
+- (IBAction)onReply:(id)sender {
+    ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];
+    vc.toBeRepliedTweet = self.tweet;
+    UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+    [nvc pushViewController:vc animated:YES];
+}
+
+- (IBAction)onRetweet:(id)sender {
+    if (self.tweet.retweeted) {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on.png"] forState:UIControlStateNormal];
+    } else {
+        [[TwitterClient sharedInstance] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if (!error) {
+            UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+            TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
+            [vc addTweet:tweet];
+            self.tweet.retweetCount = @([self.tweet.retweetCount intValue] + 1);
+            self.tweet.retweeted = YES;
+            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            //[nvc popToRootViewControllerAnimated:YES];
+            } else {
+                NSLog(@"Error retweet from timeline %@", error);
+            }
+        }];
+    }
+}
+
+- (IBAction)onFavorite:(id)sender {
+    if (self.tweet.favorited) {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on.png"] forState:UIControlStateNormal];
+    } else {
+        [[TwitterClient sharedInstance] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            NSLog(@"finished favoriting tweet %@", tweet);
+            UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+            TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
+            self.tweet.favourites_count = @([self.tweet.favourites_count intValue] + 1);
+            self.tweet.favorited = YES;
+            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            //[nvc popToRootViewControllerAnimated:YES];
+        }];
+    }
+}
+
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
     self.tweetLabel.preferredMaxLayoutWidth = self.bounds.size.width;
+    
+    [super layoutSubviews];
+ 
+    //[self setupButtons];
 }
 
 @end

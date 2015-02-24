@@ -16,8 +16,9 @@
 
 @interface TwitterTimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property long currentIndex;
 @end
 
 @implementation TwitterTimelineViewController
@@ -25,10 +26,10 @@
 - (void)viewDidLoad {
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tweets = [[NSArray alloc] init];
+    self.tweets = [[NSMutableArray alloc] init];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
-    self.tableView.estimatedRowHeight = 104;
+    self.tableView.estimatedRowHeight = 140;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // Add refresh control
@@ -47,12 +48,28 @@
     [super viewDidLoad];
 }
 
+/*- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}*/
+
+- (void) addTweet:(Tweet *)tweet {
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
+- (void) updateTweet:(Tweet *)tweet oldTweet:(Tweet *)oldTweet {
+    long index = [self.tweets indexOfObject:oldTweet];
+    //self.currentIndex;
+    self.tweets[index] = tweet;
+    [self.tableView reloadData];
+}
+
 - (void)onRefresh {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         for (Tweet *tweet in tweets) {
             NSLog(@"current tweet=%@, created=%@", tweet.text, tweet.createdAt);
         }
-        self.tweets = tweets;
+        self.tweets = [NSMutableArray arrayWithArray:tweets];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
@@ -85,6 +102,8 @@
         cell = [[TweetCell alloc] init];
     }
     Tweet * tweet = self.tweets[indexPath.row];
+    cell.tweet = tweet;
+    /*[cell setupButtons];
     cell.nameLabel.text = tweet.user.name;
     cell.tweetLabel.text = tweet.text;
     NSDateFormatter *dateformater =[[NSDateFormatter alloc]init];
@@ -92,10 +111,18 @@
     cell.createdAtLabel.text = [dateformater stringFromDate:tweet.createdAt]; // Convert date to string
     [cell.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
     cell.screenNameLabel.text = tweet.user.screenName;
+    NSString *details = @"";
+    if (tweet.retweeted) {
+        details = [details stringByAppendingString:@" retweeted"];
+    } else if (tweet.inReplyToStatusId) {
+        details = [details stringByAppendingString:[NSString stringWithFormat:@" in reply to @%@", tweet.inReplyToScreenName]];
+    }
+    cell.additionalDetailsLabel.text = details;*/
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.currentIndex = indexPath.row;
     TweetViewController *vc = [[TweetViewController alloc] init];
     
     vc.tweet = self.tweets[indexPath.row];
