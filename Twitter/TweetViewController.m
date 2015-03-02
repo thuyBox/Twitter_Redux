@@ -25,14 +25,11 @@
     
     self.nameLabel.text = self.tweet.user.name;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:self.tweet.user.profileImageUrl]];
-    self.screenNameLabel.text = self.tweet.user.screenName;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", self.tweet.user.screenName];
     self.tweetLabel.text = self.tweet.text;
     NSDateFormatter *dateformater =[[NSDateFormatter alloc]init];
     [dateformater setDateFormat:@"MM/d/y"]; // Date formater
     self.createdAtLabel.text = [dateformater stringFromDate:self.tweet.createdAt];
-    
-    //UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
-   // self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     self.navigationItem.hidesBackButton = NO;
     
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply:)];

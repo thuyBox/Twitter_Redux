@@ -24,7 +24,7 @@
     User *currentUser = [User user];
     self.nameLabel.text = currentUser.name;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:currentUser.profileImageUrl]];
-    self.screenNameLabel.text = currentUser.screenName;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", currentUser.screenName];
     self.tweetTextView.text = @"";
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];

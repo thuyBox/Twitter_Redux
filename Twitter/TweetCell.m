@@ -36,7 +36,7 @@
     self.tweetLabel.text = tweet.text;
     self.createdAtLabel.text = tweet.createdAt.shortTimeAgoSinceNow;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
-    self.screenNameLabel.text = tweet.user.screenName;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     NSString *details = @"";
     if (tweet.retweeted) {
         details = [details stringByAppendingString:@" retweeted"];
