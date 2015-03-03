@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A29812C1AA4021E00C2CCE1 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A29812A1AA4021E00C2CCE1 /* ProfileCell.m */; };
+		6A29812D1AA4021E00C2CCE1 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A29812B1AA4021E00C2CCE1 /* ProfileCell.xib */; };
+		6A6CBF6F1AA552A300DCDFB2 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBF6D1AA552A300DCDFB2 /* AccountCell.m */; };
+		6A6CBF701AA552A300DCDFB2 /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6CBF6E1AA552A300DCDFB2 /* AccountCell.xib */; };
 		7603E13F1A9AE57200245DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E13E1A9AE57200245DD2 /* main.m */; };
 		7603E1421A9AE57200245DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7603E1411A9AE57200245DD2 /* AppDelegate.m */; };
 		7603E14A1A9AE57200245DD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7603E1491A9AE57200245DD2 /* Images.xcassets */; };
@@ -55,6 +59,12 @@
 /* Begin PBXFileReference section */
 		3810FFAA274F05B7CDC13482 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		429D668D5EB3802DE42F0F47 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6A2981291AA4021E00C2CCE1 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		6A29812A1AA4021E00C2CCE1 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		6A29812B1AA4021E00C2CCE1 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		6A6CBF6C1AA552A300DCDFB2 /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		6A6CBF6D1AA552A300DCDFB2 /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		6A6CBF6E1AA552A300DCDFB2 /* AccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		7603E1391A9AE57200245DD2 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7603E13D1A9AE57200245DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7603E13E1A9AE57200245DD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -229,6 +239,9 @@
 				7603E19C1A9B419A00245DD2 /* TwitterTimelineViewController.h */,
 				7603E1981A9B418200245DD2 /* TwitterTimelineViewController.m */,
 				7603E1991A9B418200245DD2 /* TwitterTimelineViewController.xib */,
+				7603E1A51AA186F700245DD2 /* ProfileViewController.h */,
+				7603E1A61AA186F700245DD2 /* ProfileViewController.m */,
+				7603E1A71AA186F700245DD2 /* ProfileViewController.xib */,
 				7603E1671A9AE91800245DD2 /* LoginViewController.h */,
 				7603E1681A9AE91800245DD2 /* LoginViewController.m */,
 				7603E1691A9AE91800245DD2 /* LoginViewController.xib */,
@@ -241,9 +254,6 @@
 				7603E1A01AA185B600245DD2 /* MenuViewController.h */,
 				7603E1A11AA185B600245DD2 /* MenuViewController.m */,
 				7603E1A21AA185B600245DD2 /* MenuViewController.xib */,
-				7603E1A51AA186F700245DD2 /* ProfileViewController.h */,
-				7603E1A61AA186F700245DD2 /* ProfileViewController.m */,
-				7603E1A71AA186F700245DD2 /* ProfileViewController.xib */,
 				7603E1AA1AA18B1000245DD2 /* ContainerViewController.h */,
 				7603E1AB1AA18B1000245DD2 /* ContainerViewController.m */,
 				7603E1AC1AA18B1000245DD2 /* ContainerViewController.xib */,
@@ -266,6 +276,12 @@
 				7603E1761A9B13FD00245DD2 /* TweetCell.h */,
 				7603E1771A9B13FD00245DD2 /* TweetCell.m */,
 				7603E1781A9B13FD00245DD2 /* TweetCell.xib */,
+				6A2981291AA4021E00C2CCE1 /* ProfileCell.h */,
+				6A29812A1AA4021E00C2CCE1 /* ProfileCell.m */,
+				6A29812B1AA4021E00C2CCE1 /* ProfileCell.xib */,
+				6A6CBF6C1AA552A300DCDFB2 /* AccountCell.h */,
+				6A6CBF6D1AA552A300DCDFB2 /* AccountCell.m */,
+				6A6CBF6E1AA552A300DCDFB2 /* AccountCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -357,11 +373,13 @@
 				7603E18E1A9B2E1000245DD2 /* favorite.png in Resources */,
 				7603E1941A9B36B500245DD2 /* retweet_on.png in Resources */,
 				7603E18D1A9B2E1000245DD2 /* reply.png in Resources */,
+				6A6CBF701AA552A300DCDFB2 /* AccountCell.xib in Resources */,
 				7603E1871A9B2C2F00245DD2 /* TweetViewController.xib in Resources */,
 				7603E17A1A9B13FD00245DD2 /* TweetCell.xib in Resources */,
 				7603E14D1A9AE57200245DD2 /* LaunchScreen.xib in Resources */,
 				7603E1AE1AA18B1000245DD2 /* ContainerViewController.xib in Resources */,
 				7603E1821A9B1CC500245DD2 /* ComposeTweetViewController.xib in Resources */,
+				6A29812D1AA4021E00C2CCE1 /* ProfileCell.xib in Resources */,
 				7603E18F1A9B2E1000245DD2 /* retweet.png in Resources */,
 				7603E1931A9B36B500245DD2 /* reply_hover.png in Resources */,
 				7603E1A41AA185B600245DD2 /* MenuViewController.xib in Resources */,
@@ -428,7 +446,9 @@
 				7603E16E1A9AE96300245DD2 /* TwitterClient.m in Sources */,
 				7603E1721A9AF2BC00245DD2 /* Tweet.m in Sources */,
 				7603E1421A9AE57200245DD2 /* AppDelegate.m in Sources */,
+				6A6CBF6F1AA552A300DCDFB2 /* AccountCell.m in Sources */,
 				7603E13F1A9AE57200245DD2 /* main.m in Sources */,
+				6A29812C1AA4021E00C2CCE1 /* ProfileCell.m in Sources */,
 				7603E1AD1AA18B1000245DD2 /* ContainerViewController.m in Sources */,
 				7603E1A31AA185B600245DD2 /* MenuViewController.m in Sources */,
 				7603E1A81AA186F700245DD2 /* ProfileViewController.m in Sources */,

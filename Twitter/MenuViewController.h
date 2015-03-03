@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContainerViewController.h"
+
+@protocol MenuViewControllerDelegate <NSObject>
+
+- (void) displayContent:(UIViewController *)vc;
+
+@end
 
 @interface MenuViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) id<MenuViewControllerDelegate> delegate;
+- (MenuViewController *)initWithParentContainerViewController:(ContainerViewController *)parentContainerViewController;
 @end

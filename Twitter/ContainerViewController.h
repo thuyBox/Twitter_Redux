@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TweetCell.h"
 
-@interface ContainerViewController : UIViewController
+@interface ContainerViewController : UIViewController <TweetCellDelegate>
 - (IBAction)onPanGesture:(UIPanGestureRecognizer *)sender;
 
 @end

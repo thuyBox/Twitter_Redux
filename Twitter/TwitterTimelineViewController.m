@@ -14,14 +14,22 @@
 #import "ComposeTweetViewController.h"
 #import "TweetViewController.h"
 
-@interface TwitterTimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TwitterTimelineViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *tweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property long currentIndex;
 @end
 
 @implementation TwitterTimelineViewController
+
+- (TwitterTimelineViewController *)initWithParentContainerViewController:(ContainerViewController *)parentContainerViewController {
+    self = [super init];
+    if (self) {
+        self.parentContainerViewController = parentContainerViewController;
+        NSLog(@"assign TwitterTimelineViewController's parentContainerViewController %@", parentContainerViewController);
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     self.tableView.dataSource = self;
@@ -47,10 +55,6 @@
     
     [super viewDidLoad];
 }
-
-/*- (void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-}*/
 
 - (void) addTweet:(Tweet *)tweet {
     [self.tweets insertObject:tweet atIndex:0];
@@ -88,36 +92,19 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void) logout {
-    [User setUser:nil];
+    /*[User setUser:nil];
     [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];*/
+    [User logout];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-    
-    if (cell == nil) {
-        cell = [[TweetCell alloc] init];
-    }
+    cell.delegate = self.parentContainerViewController;
     Tweet * tweet = self.tweets[indexPath.row];
     cell.tweet = tweet;
-    /*[cell setupButtons];
-    cell.nameLabel.text = tweet.user.name;
-    cell.tweetLabel.text = tweet.text;
-    NSDateFormatter *dateformater =[[NSDateFormatter alloc]init];
-    [dateformater setDateFormat:@"MM/d/y"]; // Date formater
-    cell.createdAtLabel.text = [dateformater stringFromDate:tweet.createdAt]; // Convert date to string
-    [cell.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
-    cell.screenNameLabel.text = tweet.user.screenName;
-    NSString *details = @"";
-    if (tweet.retweeted) {
-        details = [details stringByAppendingString:@" retweeted"];
-    } else if (tweet.inReplyToStatusId) {
-        details = [details stringByAppendingString:[NSString stringWithFormat:@" in reply to @%@", tweet.inReplyToScreenName]];
-    }
-    cell.additionalDetailsLabel.text = details;*/
     return cell;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "TwitterClient.h"
 
 NSString * const UserDidLoginNotification = @"UserDidLoginNotification";
 NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
@@ -26,6 +27,11 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
         self.screenName = dictionary[@"screen_name"];
         self.profileImageUrl = dictionary[@"profile_image_url"];
         self.tagline = dictionary[@"description"];
+        self.followersCount = [dictionary[@"friends_count"] integerValue];
+        self.followingCount = [dictionary[@"followers_count"] integerValue];
+        self.favoritesCount = [dictionary[@"favourites_count"] integerValue];
+        self.profileBannerUrl = dictionary[@"profile_banner_url"];
+        self.userId = dictionary[@"id_str"];
     }
     
     return self;
@@ -57,6 +63,13 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)logout {
+    [User setUser:nil];
+    [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
 }
 
 @end

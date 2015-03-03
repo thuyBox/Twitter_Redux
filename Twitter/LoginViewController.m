@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "TwitterTimelineViewController.h"
+#import "ContainerViewController.h"
 
 @interface LoginViewController ()
 
@@ -18,9 +19,9 @@
 - (IBAction)loginClicked:(id)sender {
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         NSLog(@"Welcome %@", user.name);
-        TwitterTimelineViewController *vc = [[TwitterTimelineViewController alloc] init];
-        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-        [[UIApplication sharedApplication] delegate].window.rootViewController = nvc;
+        //TwitterTimelineViewController *vc = [[TwitterTimelineViewController alloc] init];
+        //UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+        [[UIApplication sharedApplication] delegate].window.rootViewController = [[ContainerViewController alloc] init];
         //[self presentViewController:nvc animated:YES completion:nil];
     }];
 }

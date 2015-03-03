@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Tweet.h"
 #import "LoginViewController.h"
+#import "ContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -33,9 +34,11 @@
         self.window.rootViewController = [[LoginViewController alloc] init];
     } else {
         NSLog(@"found current user %@", currentUser.name);
-        TwitterTimelineViewController *vc = [[TwitterTimelineViewController alloc] init];
-        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-        self.window.rootViewController = nvc;
+        //TwitterTimelineViewController *vc = [[TwitterTimelineViewController alloc] init];
+        //UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+        
+        ContainerViewController *cvc = [[ContainerViewController alloc] init];
+        self.window.rootViewController = cvc;
     }
     
     [self.window makeKeyAndVisible];

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "TwitterTimelineViewController.h"
 
-@interface ProfileViewController : UIViewController
-
+@interface ProfileViewController : TwitterTimelineViewController//UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) User *user;
+- (ProfileViewController *)initWithParentContainerViewController:(ContainerViewController *)parentContainerViewController;
 @end

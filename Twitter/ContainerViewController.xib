@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerViewController">
             <connections>
                 <outlet property="contentView" destination="1xd-OH-9yn" id="iem-EK-iHs"/>
-                <outlet property="leftView" destination="1xd-OH-9yn" id="rkh-23-vJe"/>
+                <outlet property="leftView" destination="E5C-9r-FgD" id="qp9-ZT-Y8m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,25 +16,47 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5C-9r-FgD">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xd-OH-9yn">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="bKU-KM-y1v" appends="YES" id="Wp8-71-bOb"/>
+                    </connections>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xd-OH-9yn">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5C-9r-FgD">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="KaE-Az-cUs"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="hRT-z7-mbQ" appends="YES" id="MvP-WO-Y6u"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="SKn-hq-6Qh" appends="YES" id="che-Dy-ooV"/>
-            </connections>
+            <constraints>
+                <constraint firstItem="E5C-9r-FgD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="05c-FJ-9bu"/>
+                <constraint firstAttribute="bottom" secondItem="E5C-9r-FgD" secondAttribute="bottom" id="7BM-zi-tm1"/>
+                <constraint firstItem="E5C-9r-FgD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9D3-R3-0Te"/>
+                <constraint firstAttribute="trailing" secondItem="1xd-OH-9yn" secondAttribute="trailing" id="Lf4-ol-kW1"/>
+                <constraint firstItem="1xd-OH-9yn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="meH-Ce-zoW"/>
+                <constraint firstItem="1xd-OH-9yn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rx5-z6-i80"/>
+                <constraint firstAttribute="bottom" secondItem="1xd-OH-9yn" secondAttribute="bottom" id="yce-64-6Wc"/>
+            </constraints>
             <point key="canvasLocation" x="360" y="354"/>
         </view>
-        <panGestureRecognizer minimumNumberOfTouches="1" id="SKn-hq-6Qh">
+        <panGestureRecognizer minimumNumberOfTouches="1" id="bKU-KM-y1v">
             <connections>
-                <action selector="onPanGesture:" destination="-1" id="Syi-sU-pQI"/>
+                <action selector="onPanGesture:" destination="-1" id="YqB-Tt-Avm"/>
+            </connections>
+        </panGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="hRT-z7-mbQ">
+            <connections>
+                <action selector="onPanGesture:" destination="-1" id="YvB-kG-jTJ"/>
             </connections>
         </panGestureRecognizer>
     </objects>

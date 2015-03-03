@@ -20,6 +20,10 @@
     
     self.profileImageView.layer.cornerRadius = 3;
     self.profileImageView.clipsToBounds = YES;
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileImageTap)];
+    [profileTapGestureRecognizer setNumberOfTouchesRequired:1];
+    [profileTapGestureRecognizer setNumberOfTapsRequired:1];
+    [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -77,6 +81,12 @@
     
     [self.replyButton setBackgroundImage:[UIImage imageNamed:@"reply.png"] forState:UIControlStateNormal];
 }
+
+- (void)onProfileImageTap {
+    NSLog(@"cell delegate=%@", self.delegate);
+    [self.delegate onProfileImageTap:self.tweet.user];
+}
+
 
 - (IBAction)onReply:(id)sender {
     ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];

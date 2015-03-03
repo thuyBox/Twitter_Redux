@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "User.h"
+
+@protocol TweetCellDelegate <NSObject>
+- (void)onProfileImageTap:(User *)user;
+@end
 
 @interface TweetCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -25,5 +30,9 @@
 - (IBAction)onRetweet:(id)sender;
 - (IBAction)onFavorite:(id)sender;
 - (void)setupButtons;
+//- (IBAction)onProfileImageTap:(UITapGestureRecognizer *)sender;
 @property (strong, nonatomic, readwrite) Tweet *tweet;
+
+@property (strong, nonatomic) id<TweetCellDelegate> delegate;
+
 @end
