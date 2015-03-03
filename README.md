@@ -12,7 +12,6 @@ Time spent '10 hours'
   - [x] Contains the user header view
   - [x] Contains a section with the users basic stats: # tweets, # following, # followers
   - [x] Optional: Implement the paging view for the user tweets and favorites.
-  - [] Optional: Pulling down the profile page should blur and resize the header image.
 - [x] Home Timeline
   - [x] Tapping on a user image should bring up that user's profile page
 
