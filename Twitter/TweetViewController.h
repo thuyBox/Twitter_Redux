@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "TwitterTimelineViewController.h"
+
+@protocol TweetViewController <NSObject>
+
+- (void)updateTweet:(Tweet *)tweet oldTweet:(Tweet *)oldTweet;
+
+@end
 
 @interface TweetViewController : UIViewController
 @property (nonatomic, strong) Tweet *tweet;
@@ -25,4 +32,6 @@
 - (IBAction)onRetweet:(id)sender;
 - (IBAction)onFavorite:(id)sender;
 
+@property (strong, nonatomic) id<TweetViewController> delegate;
+@property (strong, nonatomic) id<TweetUpdateDelegate> tweetsDelegate;
 @end

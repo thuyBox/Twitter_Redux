@@ -59,6 +59,7 @@
 /* Begin PBXFileReference section */
 		3810FFAA274F05B7CDC13482 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		429D668D5EB3802DE42F0F47 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6A002A7E1AA65E6E00CB83AA /* TweetUpdateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetUpdateDelegate.h; sourceTree = "<group>"; };
 		6A2981291AA4021E00C2CCE1 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		6A29812A1AA4021E00C2CCE1 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		6A29812B1AA4021E00C2CCE1 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 				7603E1AA1AA18B1000245DD2 /* ContainerViewController.h */,
 				7603E1AB1AA18B1000245DD2 /* ContainerViewController.m */,
 				7603E1AC1AA18B1000245DD2 /* ContainerViewController.xib */,
+				6A002A7E1AA65E6E00CB83AA /* TweetUpdateDelegate.h */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

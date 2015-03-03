@@ -88,11 +88,11 @@
     } else {
         [[TwitterClient sharedInstance] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (!error) {
-                TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
-                [vc addTweet:tweet];
+                //TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+                [self.tweetsDelegate addTweet:tweet];
                 self.tweet.retweetCount = @([self.tweet.retweetCount intValue] + 1);
                 self.tweet.retweeted = YES;
-                [vc updateTweet:self.tweet oldTweet:self.tweet];
+                [self.tweetsDelegate updateTweet:self.tweet oldTweet:self.tweet];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else {
                 NSLog(@"error retweeting in tweetVC: %@", error);
@@ -107,10 +107,10 @@
     } else {
         [[TwitterClient sharedInstance] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             NSLog(@"finished favoriting tweet %@", tweet);
-            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            //TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
             self.tweet.favourites_count = @([self.tweet.favourites_count intValue] + 1);
             self.tweet.favorited = YES;
-            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            [self.tweetsDelegate updateTweet:self.tweet oldTweet:self.tweet];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     }

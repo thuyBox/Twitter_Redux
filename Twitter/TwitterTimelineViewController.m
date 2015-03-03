@@ -68,6 +68,13 @@
     [self.tableView reloadData];
 }
 
+- (void) presentReplyTweet:(Tweet *)tweet {
+    ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];
+    vc.toBeRepliedTweet = tweet;
+    //UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)onRefresh {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         for (Tweet *tweet in tweets) {
@@ -103,6 +110,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     cell.delegate = self.parentContainerViewController;
+    cell.tweetsDelegate = self;
     Tweet * tweet = self.tweets[indexPath.row];
     cell.tweet = tweet;
     return cell;

@@ -9,7 +9,7 @@
 #import "TweetCell.h"
 #import "TwitterClient.h"
 #import "ComposeTweetViewController.h"
-#import "TwitterTimelineViewController.h"
+//#import "TwitterTimelineViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "NSDate+DateTools.h"
 
@@ -89,10 +89,11 @@
 
 
 - (IBAction)onReply:(id)sender {
-    ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];
+    [self.tweetsDelegate presentReplyTweet:self.tweet];
+    /*ComposeTweetViewController *vc = [[ComposeTweetViewController alloc] init];
     vc.toBeRepliedTweet = self.tweet;
     UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
-    [nvc pushViewController:vc animated:YES];
+    [nvc pushViewController:vc animated:YES];*/
 }
 
 - (IBAction)onRetweet:(id)sender {
@@ -101,12 +102,12 @@
     } else {
         [[TwitterClient sharedInstance] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if (!error) {
-            UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
-            TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
-            [vc addTweet:tweet];
+            //UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+            //TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
+            [self.tweetsDelegate addTweet:tweet];
             self.tweet.retweetCount = @([self.tweet.retweetCount intValue] + 1);
             self.tweet.retweeted = YES;
-            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            [self.tweetsDelegate updateTweet:self.tweet oldTweet:self.tweet];
             //[nvc popToRootViewControllerAnimated:YES];
             } else {
                 NSLog(@"Error retweet from timeline %@", error);
@@ -121,11 +122,11 @@
     } else {
         [[TwitterClient sharedInstance] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             NSLog(@"finished favoriting tweet %@", tweet);
-            UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
-            TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
+            //UINavigationController *nvc = (UINavigationController *)self.window.rootViewController;
+            //TwitterTimelineViewController *vc = [nvc.viewControllers objectAtIndex:0];
             self.tweet.favourites_count = @([self.tweet.favourites_count intValue] + 1);
             self.tweet.favorited = YES;
-            [vc updateTweet:self.tweet oldTweet:self.tweet];
+            [self.tweetsDelegate updateTweet:self.tweet oldTweet:self.tweet];
             //[nvc popToRootViewControllerAnimated:YES];
         }];
     }

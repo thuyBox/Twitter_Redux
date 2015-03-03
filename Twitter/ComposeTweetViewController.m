@@ -45,16 +45,16 @@
     if (self.toBeRepliedTweet) {
         [[TwitterClient sharedInstance] reply:self.toBeRepliedTweet text:self.tweetTextView.text completion:^(Tweet *tweet, NSError *error) {
             NSLog(@"Finished replying: %@", tweet);
-            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
-            [vc addTweet:tweet];
+            //TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            [self.tweetsDelegate addTweet:tweet];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     } else {
         [[TwitterClient sharedInstance] tweet:self.tweetTextView.text completion:^(Tweet *tweet, NSError *error) {
             //TODO: handle error
             NSLog(@"Finished tweeting: %@", tweet);
-            TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
-            [vc addTweet:tweet];
+            //TwitterTimelineViewController *vc = [self.navigationController.viewControllers objectAtIndex:0];
+            [self.tweetsDelegate addTweet:tweet];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     }

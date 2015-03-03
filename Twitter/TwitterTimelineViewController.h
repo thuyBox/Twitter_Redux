@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "TWeet.h"
 #import "ContainerViewController.h"
+#import "TweetUpdateDelegate.h"
+/*@protocol TweetUpdateDelegate <NSObject>
 
-@interface TwitterTimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-- (void) addTweet:(Tweet *)tweet;
 - (void) updateTweet:(Tweet *)tweet oldTweet:(Tweet *)oldTweet;
+- (void) addTweet:(Tweet *)tweet;
+
+@end*/
+
+@interface TwitterTimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TweetUpdateDelegate>
+//- (void) addTweet:(Tweet *)tweet;
+//- (void) updateTweet:(Tweet *)tweet oldTweet:(Tweet *)oldTweet;
 - (void)onRefresh;
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) ContainerViewController *parentContainerViewController;
 - (TwitterTimelineViewController *)initWithParentContainerViewController:(ContainerViewController *)parentContainerViewController;
+
 @end

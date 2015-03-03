@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 #import "User.h"
+#import "TweetUpdateDelegate.h"
 
 @protocol TweetCellDelegate <NSObject>
 - (void)onProfileImageTap:(User *)user;
@@ -34,5 +35,5 @@
 @property (strong, nonatomic, readwrite) Tweet *tweet;
 
 @property (strong, nonatomic) id<TweetCellDelegate> delegate;
-
+@property (strong, nonatomic) id<TweetUpdateDelegate> tweetsDelegate;
 @end
